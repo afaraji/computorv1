@@ -26,17 +26,40 @@
 # 	if(x[0] > 2):
 # 		pairs.remove(x)
 # print(pairs)
+#--------------------------------------
+# SQUARE = "\u00B2"
+# pairs = [(0, 0), (1, 0), (2, 0)]
 
-pairs = [(0, 0), (1, 0), (2, 0)]
+# def Error(text, error_num):
+# 	print("\x1b[6;30;41mERROR:\x1b[0m", text)
+# 	exit(error_num)
 
-def Error(text, error_num):
-	print("\x1b[6;30;41mERROR:\x1b[0m", text)
-	exit(error_num)
+# def Parser(text):
+# 	lol = text.replace(" ", "")
+# 	print("testing:" + SQUARE,lol)
+# 	Error("wrong dadadada lol p.", 2)
 
-def Parser(text):
-	lol = text.replace(" ", "")
-	print(lol)
-	Error("wrong dadadada lol p.", 2)
+# tt = "-    5     * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
+# Parser(tt)
+#------------------------------------------
+def Get_num(str):
+	i = 0
+	num = ""
+	is_float = False
+	while (i < len(str)):
+		if (str[i].isdigit() or (str[i] == '.' and is_float == False)):
+			num += str[i]
+			if (str[i] == '.'): is_float = True
+			i += 1
+		else:
+			break
 
-tt = "-    5     * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
-Parser(tt)
+	return float(num), i + 1 # or i + 1 ?
+
+str = "-55.12*X"
+coefficient, inc = Get_num(str[1:])
+print(coefficient, "|", str[inc])
+
+
+0.905239
+-0.475131
