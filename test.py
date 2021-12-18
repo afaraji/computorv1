@@ -29,9 +29,14 @@
 
 pairs = [(0, 0), (1, 0), (2, 0)]
 
+def Error(text, error_num):
+	print("\x1b[6;30;41mERROR:\x1b[0m", text)
+	exit(error_num)
+
 def Parser(text):
 	lol = text.replace(" ", "")
 	print(lol)
+	Error("wrong dadadada lol p.", 2)
 
 tt = "-    5     * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
 Parser(tt)

@@ -2,6 +2,10 @@ import sys
 
 pairs = [(0, 0), (1, 1), (2, 0)] # pars: (power, coefficient)
 
+def Error(text, error_num):
+	print("\x1b[6;30;41mERROR:\x1b[0m", text)
+	exit(error_num)
+
 def is_power_in_list(power):
 	for i in range(len(pairs)):
 		if pairs[i][0] == power:
@@ -25,8 +29,7 @@ def Validate_list():
 			if x[1] == 0:
 				pairs.remove(x)
 			else:
-				print("Error: Only polynomial second or lower degree equation are allowed.")
-				return False
+				Error("Only polynomial second or lower degree equation are allowed.", 1)
 	a = pairs[2][1]
 	b = pairs[1][1]
 	c = pairs[0][1]
@@ -55,14 +58,14 @@ def SolveEquation(a, b, c):
 			print("X1 =", (-b) / (2 * a), "+", Sqrt(-delta)/(2 * a), "i")
 			print("X2 =", (-b) / (2 * a), "-", Sqrt(-delta)/(2 * a), "i")
 
-if (len(sys.argv) != 2):
-	print("python3 computerv1 [equation]")
-	print("euation eg: 5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0")
-	exit()
-
 def Parser(text):
-	text.replace(" ", "")
+	texts = text.replace(" ", "").split("=")
+	if (len(texts) != 2):
+		Error("Only one '=' is allowed.\nequation eg: 5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0")
 
+
+if (len(sys.argv) != 2):
+	Error("python3 computerv1 [equation]\nequation eg: 5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0")
 print("equation: " + sys.argv[1] + "\n-------------------------")
 str = sys.argv[1].split(' ')
 a = str[0]
