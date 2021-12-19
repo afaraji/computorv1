@@ -61,5 +61,6 @@ coefficient, inc = Get_num(str[1:])
 print(coefficient, "|", str[inc])
 
 
-0.905239
--0.475131
+"5 * x^*32 = 0"
+"5 *x^2 = 100 *"
+
